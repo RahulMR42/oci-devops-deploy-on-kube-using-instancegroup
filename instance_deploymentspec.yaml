@@ -17,6 +17,7 @@ steps:
       python3 -m pip install --user oci-cli
       export OCI_CLI_AUTH=instance_principal
       export PATH=$PATH:~/.local/bin/
-      echo ${KUBE_ARTIFACT_ID}
+      oci artifacts generic artifact download-by-path --repository-id ${KUBE_ARTIFACT_ID} --artifact-path kube_artifacts --artifact-version ${BUILDRUN_HASH} --file ./kube_manifest.yaml
+      cat  kube_manifest.yaml 
     
     timeoutInSeconds: 600
