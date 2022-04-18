@@ -6,6 +6,7 @@ shell: bash
 env:
   # these are local variables to the build config
   variables:
+    xxx:yyyy
 
   # the value of a vaultVariable is the secret-id (in OCI ID format) stored in the OCI Vault service
   # you can then access the value of that secret in your build_spec.yaml commands
@@ -20,6 +21,7 @@ env:
 #Its a native way to fetch artifacts from external or artifact repo or a file path to use before a stage.
 # More about buildspec formats - https://docs.oracle.com/en-us/iaas/Content/devops/using/build_specs.htm
 
+steps:
   - type: Command
     name: "Define unique image tag"
     timeoutInSeconds: 40
