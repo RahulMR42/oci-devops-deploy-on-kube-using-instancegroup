@@ -180,8 +180,7 @@ token="kube access token"
 
 - Rename instance_deploymentspec_kube.yaml as instance_deploymentspec.yaml
 
-- Re run the pipeline and validate.
-
+- Re run the build pipeline and validate.
 
 
 
