@@ -174,6 +174,7 @@ Allow dynamic-group xxxx to read secret-family in compartment <compartment_name>
 Example .
 
 server=https://x.x.x.x:port
+
 token="kube access token"
 
 - Rename  build_spec_kube.yaml as build_spec.yaml
