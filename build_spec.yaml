@@ -6,7 +6,7 @@ shell: bash
 env:
   # these are local variables to the build config
   variables:
-    # kubeconfig_passcode: "test"
+    artifact_repo_ocid: ocid1.artifactrepository.oc1.iad.0.amaaaaaak56z2vqasx55vg7pioqe3kuede4bn53ubrp5scvijmkthc36imwa
    
 
   # the value of a vaultVariable is the secret-id (in OCI ID format) stored in the OCI Vault service
@@ -17,6 +17,7 @@ env:
   # For this Build to run, the Build Pipeline needs to have a BUILDRUN_HASH parameter set
   exportedVariables:
     - BUILDRUN_HASH
+    - KUBE_ARTIFACT_ID
 
 
 #Its a native way to fetch artifacts from external or artifact repo or a file path to use before a stage.
@@ -28,7 +29,9 @@ steps:
     timeoutInSeconds: 40
     command: |
       export BUILDRUN_HASH=`echo ${OCI_BUILD_RUN_ID} | rev | cut -c 1-7`
+      export KUBE_ARTIFACT_ID=${artifact_repo_ocid}
       echo "BUILDRUN_HASH: " $BUILDRUN_HASH
+
       
 
   - type: Command
@@ -50,3 +53,9 @@ outputArtifacts:
     # this location tag doesn't effect the tag used to deliver the container image
     # to the Container Registry
     location: ${OCI_PRIMARY_SOURCE_DIR}/kubemanifest.yaml
+
+  - name: instance_group_manifest
+    type: BINARY
+    # this location tag doesn't effect the tag used to deliver the container image
+    # to the Container Registry
+    location: ${OCI_PRIMARY_SOURCE_DIR}/instance_deploymentspec.yaml
