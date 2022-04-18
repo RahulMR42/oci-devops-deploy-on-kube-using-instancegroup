@@ -92,17 +92,84 @@ users:
 ![](images/oci_instances.png)
 
 
+- Create a devops environment with the instance information - https://docs.oracle.com/en-us/iaas/Content/devops/using/environments.htm
+
+![](images/oci_env.png)
+
+- Create artifacts - https://docs.oracle.com/en-us/iaas/Content/devops/using/artifacts.htm
+
+- Artifact for Container Image ,with type as Container Image (The image will be used to deploy on to the target kubernetes).
+
+![](images/oci_artifact_1.png)
+
+- Artifact for Kubernetes manifest (A yaml to use with kubectl)
+
+![](images/oci_artifact_2.png)
+
+- Artifact for instance group deployment (To orchestrate instance actions )
+
+![](images/oci_artifact_2.png)
+
 - Create a build pipeline - https://docs.oracle.com/en-us/iaas/Content/devops/using/create_buildpipeline.htm#create_buildpipeline 
 
 
+- Add  a manged build stage. 
 
+![](images/oci_build_1.png)
 
+- Add a deliver artifact stage.Select all 3 artifacts and associate with the correct outputArtifact name from build_spec file.
 
+![](images/oci_build_1.png)
 
 - Create a deploy pipeline - https://docs.oracle.com/en-us/iaas/Content/devops/using/deployment_pipelines.htm 
 
 
+![](images/oci_deploy_1.png)
+
+- Add a deploy to instance group stage to the deploy pipeline
+
+![](images/oci_deploy_1.png)
+
+- Switch back to build pipeline and add a trigger deployment stage to connect build and deployment.
+
+![](images/oci_deploy_1.png)
+
+
+- Here we are using an OKE to simulate as an `external` kubernetes ,so these values to adjust at the build_spec.yaml
+
+![](images/oci_build_spec.png)
+
+
+```
+variables:
+    artifact_repo_ocid: <OCID of artifact repo>
+    oke_oci_odi: <OCI of OKE>
+    region: <OCI Region>
+    oci_oke_endpoint_type: <Cluster API Endpoint type  - PUBLIC_ENDPOINT or PRIVATE_ENDPOINT>
+```
+
+- Upload the changes back to OCI Code repo and do a manual run.
+
+- Once the build completes follow the deployment and finally validate the kubernetes deployments (Its a web app ,can be launched using the service loadbalancer IP)
+
+- You may use cloud-shell or bastion hosts to verify the kubernetes deployments as well.
+
+
+![](images/build_done.png)
+
+
+Read more 
+----
+
+- OCI Devops - https://docs.oracle.com/en-us/iaas/Content/devops/using/home.htm.
+- OCI Reference architectures  -  https://docs.oracle.com/solutions/
+- OCI Devops samples - https://github.com/oracle-devrel/oci-devops-examples 
 
 
 
+Contributors 
+===========
 
+- Author : Rahul M R.
+- Colloboroators : NA
+- Last release : March 2022
