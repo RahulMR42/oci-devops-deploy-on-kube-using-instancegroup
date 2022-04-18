@@ -18,6 +18,7 @@ steps:
       export OCI_CLI_AUTH=instance_principal
       export PATH=$PATH:~/.local/bin/
       oci artifacts generic artifact download-by-path --repository-id ${KUBE_ARTIFACT_ID} --artifact-path kube_artifacts --artifact-version ${BUILDRUN_HASH} --file ./kube_manifest.yaml
-      cat  kube_manifest.yaml 
-    
+      oci ce cluster create-kubeconfig --cluster-id ${OKE_OCID} --file $HOME/.kube/config --region ${OCI_REGION} --token-version 2.0.0  --kube-endpoint ${OKE_ENDPOINT}
+      kubectl get nodes
+
     timeoutInSeconds: 600

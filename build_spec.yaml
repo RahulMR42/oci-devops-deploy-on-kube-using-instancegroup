@@ -7,6 +7,9 @@ env:
   # these are local variables to the build config
   variables:
     artifact_repo_ocid: ocid1.artifactrepository.oc1.iad.0.amaaaaaak56z2vqasx55vg7pioqe3kuede4bn53ubrp5scvijmkthc36imwa
+    oke_oci_odi: ocid1.cluster.oc1.iad.aaaaaaaabbens6nfhgmw6qrfqmuxpaedpl7gjby66skvvphz4cpuhvwuaqia 
+    region: us-ashburn-1
+    oci_oke_endpoint_type: PUBLIC_ENDPOINT
    
 
   # the value of a vaultVariable is the secret-id (in OCI ID format) stored in the OCI Vault service
@@ -18,6 +21,9 @@ env:
   exportedVariables:
     - BUILDRUN_HASH
     - KUBE_ARTIFACT_ID
+    - OKE_OCID
+    - OCI_REGION
+    - OKE_ENDPOINT
 
 
 #Its a native way to fetch artifacts from external or artifact repo or a file path to use before a stage.
@@ -30,6 +36,9 @@ steps:
     command: |
       export BUILDRUN_HASH=`echo ${OCI_BUILD_RUN_ID} | rev | cut -c 1-7`
       export KUBE_ARTIFACT_ID=${artifact_repo_ocid}
+      export OKE_OCID=${oke_oci_ocid}
+      export OCI_REGION=${region}
+      export OKE_ENDPOINT=${oci_oke_endpoint_type}
       echo "BUILDRUN_HASH: " $BUILDRUN_HASH
 
       
