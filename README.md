@@ -158,6 +158,33 @@ variables:
 ![](images/build_done.png)
 
 
+Lets think of another scenario
+-----
+
+- In this case we are using a standard kubernetes and using token we will be creating a kubeconfig.
+
+- Create a vault and store the kubeapi server name and port as well as access token to vault secret .
+
+- Add the policy for build runner to access vault secrets 
+
+```
+Allow dynamic-group xxxx to read secret-family in compartment <compartment_name>
+```
+
+Example .
+
+server=https://x.x.x.x:port
+token="kube access token"
+
+- Rename  build_spec_kube.yaml as build_spec.yaml
+
+- Rename instance_deploymentspec_kube.yaml as instance_deploymentspec.yaml
+
+- Re run the pipeline and validate.
+
+
+
+
 
 
 Read more 

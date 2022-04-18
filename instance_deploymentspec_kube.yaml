@@ -1,0 +1,47 @@
+version: 1.0
+component: deployment
+env:
+
+files:
+  # This section is to define how the files in the artifact shall 
+  # be put on the compute instance
+  - source: /
+    destination: /tmp
+steps:
+  # This section is to define the scripts that each step shall run on the instance after file copy.
+  - stepType: Command
+    name: Reading from Local artifact
+    command: |
+      mkdir -p /tmp/kube
+      cd  /tmp/kube
+      python3 -m pip install --user oci-cli
+      export OCI_CLI_AUTH=instance_principal
+      export PATH=$PATH:~/.local/bin/
+      oci artifacts generic artifact download-by-path --repository-id ${KUBE_ARTIFACT_ID} --artifact-path kube_artifacts --artifact-version ${BUILDRUN_HASH} --file ./kube_manifest.yaml
+      echo "
+          apiVersion: v1
+          kind: Config
+          clusters:
+          - name: default-cluster
+            cluster:
+              certificate-authority-data: ${ca}
+              server: ${KUBE_SERVER}
+          contexts:
+          - name: default-context
+            context:
+              cluster: default-cluster
+              namespace: default
+              user: default-user
+          current-context: default-context
+          users:
+          - name: default-user
+            user:
+              token: ${KUBE_TOKEN}
+          " > config
+
+      export KUBECONFIG="kconfig"
+      kubectl get nodes
+      kubectl apply -f kube_manifest.yaml
+      kubectl get all 
+
+    timeoutInSeconds: 600
