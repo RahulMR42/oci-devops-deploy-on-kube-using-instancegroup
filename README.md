@@ -189,6 +189,7 @@ variables:
 - Once the build completes follow the deployment and finally validate the kubernetes deployments (Its a web app ,can be launched using the service loadbalancer IP)
 
 - You may use cloud-shell or bastion hosts to verify the kubernetes deployments as well.
+- Application url would be `http://< Service loadbalancer IP address>`
 
 
 ![](images/build_done.png)
