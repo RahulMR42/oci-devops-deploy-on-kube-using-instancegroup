@@ -7,7 +7,7 @@ env:
   # these are local variables to the build config
   variables:
     artifact_repo_ocid: ocid1.artifactrepository.oc1.iad.0.amaaaaaak56z2vqasx55vg7pioqe3kuede4bn53ubrp5scvijmkthc36imwa
-    oke_oci_odi: ocid1.cluster.oc1.iad.aaaaaaaabbens6nfhgmw6qrfqmuxpaedpl7gjby66skvvphz4cpuhvwuaqia 
+    oke_oci_ocid: ocid1.cluster.oc1.iad.aaaaaaaabbens6nfhgmw6qrfqmuxpaedpl7gjby66skvvphz4cpuhvwuaqia 
     region: us-ashburn-1
     oci_oke_endpoint_type: PUBLIC_ENDPOINT
    
