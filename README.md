@@ -12,7 +12,7 @@ Target Audience : OCI Devops Experienced
 
 Basic instructions 
 
-- Create a dynamic group with below rules 
+- Create a dynamic group with below rules for devops usages.
 
 ```
 ALL {resource.type = 'devopsbuildpipeline', resource.compartment.id = 'ocid1.compartment.oc1..xx'}	
@@ -26,7 +26,7 @@ All {instance.compartment.id = 'ocid1.compartment.oc1..xx'}
 ALL {resource.type = 'devopsconnection', resource.compartment.id = 'ocid1.compartment.oc1..xx'}
 ```
 
-- Create a policy with below statements 
+- Create a policy with below statements for devops usages.
 
 
 ```
@@ -45,7 +45,6 @@ Allow dynamic-group mr-telesis-private-dg-devops-instances to use instance-agent
 Allow dynamic-group mr-telesis-private-dg-devops-instances to read generic-artifacts in compartment <compartment_name>
 Allow dynamic-group mr-telesis-private-dg-devops-instances to read generic-artifacts in compartment mr-prod-compartment
 Allow dynamic-group  to read all-artifacts in compartment mr-prod-compartment
-Allow dynamic-group mr-telesis-private-dg-devops-instances to manage all-resources in compartment <compartment_name>
 
 ```
 
@@ -101,6 +100,24 @@ users:
 - We are using kubectl for the kubernetes deployment ,to do so you may install kubectl manually to the compute instance or add a step inside the deployment stage.
 
 https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
+
+
+
+- Create a specific dynamic group for the OCI CLI instance principal and add below rule .
+
+```
+All {instance.id = 'ocid1.instance.oc1.xxx.xxxx'}
+
+```
+
+- Create a specific policy for the OCI CLI instance principal and add below rules .
+
+
+```
+Allow dynamic-group <DG name> to manage cluster-family in compartment <Compartment name>
+```
+
+
 
 - Create a devops environment with the instance information - https://docs.oracle.com/en-us/iaas/Content/devops/using/environments.htm
 
