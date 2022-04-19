@@ -22,7 +22,7 @@ steps:
       oci ce cluster create-kubeconfig --cluster-id ${OKE_OCID} --file ./kconfig --region ${OCI_REGION} --token-version 2.0.0  --kube-endpoint ${OKE_ENDPOINT}
       export KUBECONFIG="kconfig"
       kubectl get nodes
-      kubectl apply -f kube_manifest.yaml
+      cat kube_manifest.yaml |envsubst|kubectl apply -f ..
       kubectl get all 
     
     timeoutInSeconds: 600

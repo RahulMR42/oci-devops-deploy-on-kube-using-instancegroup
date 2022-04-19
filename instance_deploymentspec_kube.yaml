@@ -41,7 +41,7 @@ steps:
 
       export KUBECONFIG="kconfig"
       kubectl get nodes
-      kubectl apply -f kube_manifest.yaml
+      cat kube_manifest.yaml |envsubst|kubectl apply -f ..
       kubectl get all 
 
     timeoutInSeconds: 600
