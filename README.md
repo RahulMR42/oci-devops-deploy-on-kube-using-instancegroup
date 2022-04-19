@@ -16,13 +16,9 @@ Basic instructions
 
 ```
 ALL {resource.type = 'devopsbuildpipeline', resource.compartment.id = 'ocid1.compartment.oc1..xx'}	
-0
 ALL {resource.type = 'devopsdeploypipeline', resource.compartment.id = 'ocid1.compartment.oc1..xx'}	
-1
 ALL {resource.type = 'devopsrepository', resource.compartment.id = 'ocid1.compartment.oc1..xx'}	
-2
 All {instance.compartment.id = 'ocid1.compartment.oc1..xx'}	
-3
 ALL {resource.type = 'devopsconnection', resource.compartment.id = 'ocid1.compartment.oc1..xx'}
 ```
 
