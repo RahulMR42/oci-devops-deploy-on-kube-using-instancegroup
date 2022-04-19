@@ -98,6 +98,9 @@ users:
 
 ![](images/oci_instances.png)
 
+- We are using kubectl for the kubernetes deployment ,to do so you may install kubectl manually to the compute instance or add a step inside the deployment stage.
+
+https://kubernetes.io/docs/tasks/tools/install-kubectl-linux/ 
 
 - Create a devops environment with the instance information - https://docs.oracle.com/en-us/iaas/Content/devops/using/environments.htm
 
