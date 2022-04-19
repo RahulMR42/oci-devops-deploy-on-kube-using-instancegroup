@@ -171,6 +171,19 @@ variables:
     oci_oke_endpoint_type: <Cluster API Endpoint type  - PUBLIC_ENDPOINT or PRIVATE_ENDPOINT>
 ```
 
+
+- Change the image reference inside file kubemanifest.yaml to the correct OCI container repo image path.
+
+```
+ containers:
+        - name: sample-oke-bg-app
+          # enter the path to your image, be sure to include the correct region prefix
+          image: <Path to Docker Image>:${BUILDRUN_HASH}
+          imagePullPolicy: Always
+          ports:
+
+```
+
 - Upload the changes back to OCI Code repo and do a manual run.
 
 - Once the build completes follow the deployment and finally validate the kubernetes deployments (Its a web app ,can be launched using the service loadbalancer IP)
@@ -179,6 +192,10 @@ variables:
 
 
 ![](images/build_done.png)
+
+- Sample deployment logs are below 
+
+![](images/oci_deploy_logs.png)
 
 
 Lets think of another scenario
