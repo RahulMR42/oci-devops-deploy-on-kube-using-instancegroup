@@ -131,7 +131,7 @@ Allow dynamic-group <DG name> to manage cluster-family in compartment <Compartme
 
 - Artifact for instance group deployment (To orchestrate instance actions )
 
-![](images/oci_artifact_2.png)
+![](images/oci_artifact_3.png)
 
 - Create a build pipeline - https://docs.oracle.com/en-us/iaas/Content/devops/using/create_buildpipeline.htm#create_buildpipeline 
 
