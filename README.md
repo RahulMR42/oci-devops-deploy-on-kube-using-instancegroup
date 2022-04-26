@@ -138,11 +138,38 @@ Allow dynamic-group <DG name> to manage cluster-family in compartment <Compartme
 
 - Add  a manged build stage. 
 
-![](images/oci_build_1.png)
+![](images/oci_build_.png)
+
 
 - Add a deliver artifact stage.Select all 3 artifacts and associate with the correct outputArtifact name from build_spec file.
 
-![](images/oci_build_1.png)
+
+- Refer the ourputArtifacts names below 
+
+```
+outputArtifacts:
+  - name: oke_app_base 
+    type: DOCKER_IMAGE
+    # this location tag doesn't effect the tag used to deliver the container image
+    # to the Container Registry
+    location: oke_app_base:latest
+
+  - name: oke_deploy_manifest
+    type: BINARY
+    # this location tag doesn't effect the tag used to deliver the container image
+    # to the Container Registry
+    location: ${OCI_PRIMARY_SOURCE_DIR}/kubemanifest.yaml
+
+  - name: instance_group_manifest
+    type: BINARY
+    # this location tag doesn't effect the tag used to deliver the container image
+    # to the Container Registry
+    location: ${OCI_PRIMARY_SOURCE_DIR}/instance_deploymentspec.yaml
+
+```
+
+![](images/oci_build_2.png)
+
 
 - Create a deploy pipeline - https://docs.oracle.com/en-us/iaas/Content/devops/using/deployment_pipelines.htm 
 
