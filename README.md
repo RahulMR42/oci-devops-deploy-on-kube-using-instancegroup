@@ -27,20 +27,14 @@ ALL {resource.type = 'devopsconnection', resource.compartment.id = 'ocid1.compar
 
 ```
 Allow dynamic-group mr-telesis-private-dg-devops-instances to manage repos in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to manage repos in compartment mr-prod-compartment
 Allow dynamic-group mr-telesis-private-dg-devops-instances to read secret-family in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to read secret-family in compartment mr-prod-compartment
 Allow dynamic-group mr-telesis-private-dg-devops-instances to manage devops-family in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to manage devops-family in compartment mr-prod-compartment
 Allow dynamic-group mr-telesis-private-dg-devops-instances to manage generic-artifacts in compartment <compartment_name>
-llow dynamic-group mr-telesis-private-dg-devops-instances to manage generic-artifacts in compartment mr-prod-compartment
+Allow dynamic-group mr-telesis-private-dg-devops-instances to manage repos in compartment <compartment_name>
 Allow dynamic-group mr-telesis-private-dg-devops-instances to use ons-topics in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to use ons-topics in compartment mr-prod-compartment
 Allow dynamic-group mr-telesis-private-dg-devops-instances to use instance-agent-command-execution-family in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to use instance-agent-command-execution-family in compartment mr-prod-compartment
 Allow dynamic-group mr-telesis-private-dg-devops-instances to read generic-artifacts in compartment <compartment_name>
-Allow dynamic-group mr-telesis-private-dg-devops-instances to read generic-artifacts in compartment mr-prod-compartment
-Allow dynamic-group  to read all-artifacts in compartment mr-prod-compartment
+Allow dynamic-group  to read all-artifacts in compartment <compartments>
 
 ```
 
